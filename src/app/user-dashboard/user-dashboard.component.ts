@@ -11,7 +11,7 @@ export class UserDashboardComponent implements OnInit {
   constructor(private auth: AuthenticationService) { }
 
   user = { displayName: "" };
-  sideBarOpen = true;
+  sideBarOpen = false;
 
   ngOnInit(): void {
     this.auth.blockDashboard();

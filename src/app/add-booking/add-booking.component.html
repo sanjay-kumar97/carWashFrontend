@@ -2,126 +2,61 @@
     <div class="page__box p-3 mt-2">
         <p class="mt-4">Book Your Slot!</p>
     </div>
-
     <div class="page__content shadow p-3 position-relative">
         <div class="page__content-data position-absolute text-center">
-            <div class="container">
-                <div id="FormContainer">
-                    <form action="" #UserSubmit="ngForm" novalidate
-                        (ngSubmit)="UserSubmit.form.valid && onUserSubmit()">
-                        <div class="bookingcontents d-flex flex-column">
-                            <label class="align-self-start">Name <b style="color: red;">*</b></label>
-                            <input type="text" placeholder="Enter your name" minlength="3" name="name" id="userName"
-                                [(ngModel)]="UserSubmitData.name" #name="ngModel" required>
-
-                            <div class="validationMessages" *ngIf="this.submit && name.errors?.['required']"
-                                class="error">
-                                <i class="bi-exclamation-circle-fill"></i>
-                                <small>Valid Name is required</small>
-                            </div>
-                            <div class="validationMessages" *ngIf="this.submit && name.errors?.['minlength']"
-                                class="error">
-                                <i class="bi-exclamation-circle-fill"></i>
-                                <small>Name must have minimum 3 letters</small>
-                            </div>
-                        </div>
-                        <div class="bookingcontents d-flex flex-column">
-                            <label class="align-self-start">Car Model<b style="color: red;">*</b></label>
-                            <input type="text" placeholder="Enter Car Model" name="model" id="userName"
-                                [(ngModel)]="UserSubmitData.model" #model="ngModel" required>
-
-                            <div class="validationMessages" *ngIf="this.submit && model.errors?.['required']"
-                                class="error">
-                                <i class="bi-exclamation-circle-fill"></i>
-                                <small>Valid model is required</small>
-                            </div>
-
-                        </div>
-
-                        <div class="bookingcontents d-flex flex-column">
-                            <label class="align-self-start">Preferred service<b style="color: red;">*</b></label>
-                            <select name="service" id="column" [(ngModel)]="UserSubmitData.service" #service="ngModel"
-                                required>
-                                <option value="" disabled selected>Select the type of service</option>
-                                <option>Foam Wash</option>
-                                <option>Normal Wash</option>
-                                <option>Ceramic Coating</option>
-
-                            </select>
-                            <div class="validationMessages" *ngIf="this.submit && service.errors?.['required']"
-                                class="error">
-                                <i class="bi-exclamation-circle-fill"></i>
-                                <small>Select a type of service</small>
-                            </div>
-
-                        </div>
-                        <div class="bookingcontents d-flex flex-column">
-                            <label class="align-self-start">Preferred Location<b style="color: red;">*</b></label>
-                            <select name="location" id="column" [(ngModel)]="UserSubmitData.location"
-                                #location="ngModel" required>
-                                <option value="" disabled selected>Select the location</option>
-                                <option>Avadi</option>
-                                <option>Guindy</option>
-                                <option>Ambattur</option>
-
-                            </select>
-                            <div class="validationMessages" *ngIf="this.submit && location.errors?.['required']"
-                                class="error">
-                                <i class="bi-exclamation-circle-fill"></i>
-                                <small>Select a location</small>
-                            </div>
-
-                        </div>
-                        <div class="bookingcontents d-flex flex-column">
-                            <label class="align-self-start">Preferred Date<b style="color: red;">*</b></label>
-                            <input type="date" placeholder="Choose Date" name="date" id="userName"
-                                [(ngModel)]="UserSubmitData.date" #date="ngModel" required>
-
-                            <div class="validationMessages" *ngIf="this.submit && date.errors?.['required']"
-                                class="error">
-                                <i class="bi-exclamation-circle-fill"></i>
-                                <small>Valid date is required</small>
-                            </div>
-                        </div>
-                        <div class="bookingcontents d-flex flex-column">
-                            <label class="align-self-start">Preferred time<b style="color: red;">*</b></label>
-                            <select name="time" id="column" [(ngModel)]="UserSubmitData.time" #time="ngModel" required>
-                                <option value="" disabled selected>Choose a Time</option>
-                                <option>10 AM to 11 AM</option>
-                                <option>11 AM to 12 PM</option>
-                                <option>01 PM to 02 PM</option>
-                                <option>02 PM to 03 PM</option>
-                                <option>03 PM to 04 PM</option>
-
-                            </select>
-                            <div class="validationMessages" *ngIf="this.submit && time.errors?.['required']"
-                                class="error">
-                                <i class="bi-exclamation-circle-fill"></i>
-                                <small>Select a time</small>
-                            </div>
-
-                        </div>
-                        <div class="bookingcontents d-flex flex-column">
-                            <label class="align-self-start">Phone Number<b style="color: red;">*</b></label>
-                            <input type="tel" placeholder="Enter your mobile number" id="number" minlength="10"
-                                maxlength="10" name="phonenumber" [(ngModel)]="UserSubmitData.phone" #phone="ngModel"
-                                required>
-                            <div class="validationMessages" *ngIf="this.submit && phone.errors?.['required']"
-                                class="error">
-                                <i class="bi-exclamation-circle-fill"></i>
-                                <small>Valid 10 Digit Phone Number is required</small>
-                            </div>
-                            <div class="validationMessages" *ngIf="this.submit && phone.errors?.['minlength']"
-                                class="error">
-                                <i class="bi-exclamation-circle-fill"></i>
-                                <small>Valid 10 Digit Phone Number is required</small>
-                            </div>
-
-                        </div>
-                        <div class="bookingcontents" id=submitbtn>
-                            <button type=" submit" id="bookSubmit" (click)="submit=true">Book Slot</button>
-                        </div>
-                    </form>
+            <div class="container py-5">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form [formGroup]="userDetails" id="bookingForm">
+                            <ul id="progressbar">
+                                <li [ngClass]="step >= 1 ? 'active' : 'inactive'"></li>
+                                <li [ngClass]="step >= 2 ? 'active' : 'inactive'"></li>
+                                <li [ngClass]="step >= 3 ? 'active' : 'inactive'"></li>
+                                <li [ngClass]="step == 4 ? 'active' : 'inactive'"></li>
+                            </ul>
+                            <fieldset *ngIf="step == 1">
+                                <p class="display-3">Who?</p>
+                                <input type="text" formControlName="name" [ngClass]="{'is-invalid' : userStep}"
+                                    placeholder="Enter your Name"><br>
+                                <input type="number" formControlName="phone" name="phone"
+                                    placeholder="Enter Phone Number" autocomplete="off"><br>
+                                <input type="button" (click)="next()" name="next" class="next action-button" value=">">
+                            </fieldset>
+                        </form>
+                        <form [formGroup]="carDetails" id="bookingForm">
+                            <fieldset *ngIf="step == 2">
+                                <p class="display-3">What?</p>
+                                <input type="text" formControlName="model" name="model"
+                                    placeholder="Enter your Car Model" autocomplete="off"><br>
+                                <input type="text" formControlName="service" name="service"
+                                    placeholder="Choose the type of Service" autocomplete="off"><br>
+                                <input (click)="previous()" type="button" name="previous"
+                                    class="previous action-button-previous" value="<">
+                                <input (click)="next()" type="button" name="next" class="next action-button" value=">">
+                            </fieldset>
+                        </form>
+                        <form [formGroup]="timeDetails" id="bookingForm">
+                            <fieldset *ngIf="step == 3">
+                                <p class="display-3">When?</p>
+                                <input type="text" formControlName="date" name="date" placeholder="Enter Date"><br>
+                                <input type="text" formControlName="time" name="time" placeholder="Enter Time"><br>
+                                <input (click)="previous()" type="button" name="previous"
+                                    class="previous action-button-previous" value="<" />
+                                <input (click)="next()" type="button" name="next" class="submit action-button"
+                                    value=">" />
+                            </fieldset>
+                        </form>
+                        <form [formGroup]="locationDetails" id="bookingForm">
+                            <fieldset *ngIf="step == 4">
+                                <p class="display-3">Where?</p>
+                                <input type="text" formControlName="place" name="place" placeholder="Enter Place"><br>
+                                <input (click)="previous()" type="button" name="previous"
+                                    class="previous action-button-previous-last" value="<" />
+                                <input (click)="submit()" type="submit" name="submit"
+                                    class="submit action-button-submit" value="Submit" />
+                            </fieldset>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

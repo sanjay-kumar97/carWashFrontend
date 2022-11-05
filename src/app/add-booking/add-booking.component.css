@@ -29,37 +29,202 @@
     transform: translate(-50%, -50%);
 }
 
-form {
-    background-color: antiquewhite;
-    padding: 50px;
-    background-color: #101f41;
-    min-width: 450px;
+#bookingForm {
+    text-align: center;
+    position: relative;
+    color: red;
+}
+
+#bookingForm fieldset {
+    background: #1e293b;
+    border: 0 none;
     border-radius: 10px;
-    color: white;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px 30px;
+    box-sizing: border-box;
+    width: 80%;
+    /* margin: 0 10%; */
+    position: relative;
+    min-height: 400px;
+    min-width: 800px;
 }
 
-.bookingcontents {
-    padding: 10px;
-    font-size: medium;
+#bookingForm fieldset:not(:first-of-type) {
+    display: none;
 }
 
-.bookingcontents input,
-select {
+#bookingForm input {
+    padding: 15px;
+    border: 1px solid #ccc;
     border-radius: 25px;
-    padding: 10px 15px;
-    margin-top: 5px;
-    border-color: transparent;
-    transform: translateX(-2.25%);
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 50%;
+    box-sizing: border-box;
+    /* font-family: montserrat; */
+    color: #2C3E50;
+    font-size: 18px;
 }
 
-.bookingcontents #bookSubmit {
-    padding: 5px 15px;
-    background-color: transparent;
-    border-radius: 15px;
+#bookingForm input:focus {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #ee0979;
+    outline-width: 0;
+    transition: All 0.5s ease-in;
+    -webkit-transition: All 0.5s ease-in;
+}
+
+#bookingForm .action-button {
+    width: 45px;
+    background: #ee0979;
+    font-weight: bold;
     color: white;
-    border-color: #006daa;
+    border-color: #ee0979;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+    transform: translateY(50%);
+    position: absolute;
+    top: 50%;
+    right: 5%;
 }
 
-#FormContainer {
-    max-height: 80vh;
+#bookingForm .action-button:hover,
+#bookingForm .action-button:focus {
+    box-shadow: 0 0 0 2px #1e293b, 0 0 0 3px #ee0979;
+}
+
+#bookingForm .action-button-previous {
+    width: 45px;
+    background: #ee0979;
+    font-weight: bold;
+    color: white;
+    border-color: #ee0979;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+    transform: translateY(50%);
+    position: absolute;
+    top: 50%;
+    left: 5%;
+}
+
+#bookingForm .action-button-previous-last {
+    width: 45px;
+    background: #ee0979;
+    font-weight: bold;
+    color: white;
+    border-color: #ee0979;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+    transform: translateY(50%);
+    position: absolute;
+    top: 80%;
+    left: 5%;
+}
+
+#bookingForm .action-button-previous:hover,
+#bookingForm .action-button-previous:focus,
+#bookingForm .action-button-previous-last:hover,
+#bookingForm .action-button-previous-last:focus {
+    box-shadow: 0 0 0 2px #1e293b, 0 0 0 3px #ee0979;
+}
+
+#bookingForm .action-button-submit {
+    width: 25%;
+    background: #ee0979;
+    font-weight: bold;
+    color: white;
+    border-color: #ee0979;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+    transform: translateY(50%);
+    position: absolute;
+    top: 150%;
+    left: 38%;
+}
+
+fieldset p {
+    color: white;
+}
+
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    counter-reset: step;
+}
+
+#progressbar li {
+    list-style-type: none;
+    color: white;
+    text-transform: uppercase;
+    font-size: 9px;
+    width: 25%;
+    float: left;
+    position: relative;
+    letter-spacing: 1px;
+}
+
+#progressbar li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 24px;
+    height: 24px;
+    line-height: 26px;
+    display: block;
+    font-size: 12px;
+    color: #333;
+    background: white;
+    border-radius: 25px;
+    margin: 0 auto 10px auto;
+}
+
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: white;
+    position: absolute;
+    left: -50%;
+    top: 9px;
+    z-index: -1;
+}
+
+#progressbar li:first-child:after {
+    content: none;
+}
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+    background: #ee0979;
+    color: white;
+}
+
+#progressbar li.inactive:before {
+    /* background: burlywood; */
+    color: #000;
+}
+
+fieldset {
+    animation-duration: 1s;
+    animation-name: slidein;
+}
+
+@keyframes slidein {
+    from {
+        margin-left: 100%;
+        width: 300%;
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
 }
