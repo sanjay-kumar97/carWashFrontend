@@ -1,0 +1,65 @@
+.page {
+    color: white;
+    padding: 0 1rem;
+    background: #f1f5f9;
+    margin-top: -6px;
+    min-height: 94vh;
+    overflow: hidden !important;
+}
+
+.page__box {
+    min-height: 120px;
+    background: #1e293b;
+    margin: 0 -1rem;
+    font-size: 36px;
+}
+
+.page__content {
+    min-height: calc(100vh - 170px);
+    border-radius: 10px;
+    margin-top: -3rem;
+    background: white;
+    color: black;
+    font-size: 2rem;
+}
+
+.page__content-data {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+form {
+    background-color: antiquewhite;
+    padding: 50px;
+    background-color: #101f41;
+    min-width: 450px;
+    border-radius: 10px;
+    color: white;
+}
+
+.bookingcontents {
+    padding: 10px;
+    font-size: medium;
+}
+
+.bookingcontents input,
+select {
+    border-radius: 25px;
+    padding: 10px 15px;
+    margin-top: 5px;
+    border-color: transparent;
+    transform: translateX(-2.25%);
+}
+
+.bookingcontents #bookSubmit {
+    padding: 5px 15px;
+    background-color: transparent;
+    border-radius: 15px;
+    color: white;
+    border-color: #006daa;
+}
+
+#FormContainer {
+    max-height: 80vh;
+}

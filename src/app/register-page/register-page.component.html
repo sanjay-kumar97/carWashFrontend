@@ -1,0 +1,89 @@
+<div class="conatainer-fluid text-center">
+    <p class="display-1">Car Wash Application</p>
+</div>
+<div class="container-fluid text-center">
+    <div class="row">
+        <div class="col-4 mx-auto">
+            <div class="signupform d-flex justify-content-center align-items-center">
+                <form action="" #SignUpForm="ngForm" novalidate (ngSubmit)="SignUpForm.form.valid && onSignup()">
+                    <div class="signuphead">
+                        <h1>Welcome!</h1>
+                    </div>
+                    <div class="signupcontents d-flex flex-column">
+                        <label class="align-self-start">Name <b style="color: red;">*</b></label>
+                        <input type="text" placeholder="Enter your name" minlength="3" name="name" id="userName"
+                            [(ngModel)]="SignUpFormsData.name" #name="ngModel" required>
+
+                        <div class="validationMessages" *ngIf="this.submit && name.errors?.['required']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small>Valid Name is required</small>
+                        </div>
+                        <div class="validationMessages" *ngIf="this.submit && name.errors?.['minlength']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small>Name must have minimum 3 letters</small>
+                        </div>
+                    </div>
+                    <div class="signupcontents d-flex flex-column">
+                        <label class="align-self-start">Email ID <b style="color: red;">*</b></label>
+                        <input type="email" placeholder="Enter your email id" name="email" id="emailId"
+                            [(ngModel)]="SignUpFormsData.email" #email="ngModel" required email>
+                        <div class="validationMessages" *ngIf="this.submit && email.errors?.['required']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small>Valid Email-ID is required</small>
+                        </div>
+                        <div class="validationMessages" *ngIf="this.submit && email.errors?.['email']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small>Valid Email-ID is required</small>
+                        </div>
+
+                    </div>
+                    <div class="signupcontents d-flex flex-column">
+                        <label class="align-self-start">Phone Number <b style="color: red;">*</b></label>
+                        <input type="tel" placeholder="Enter your mobile number" id="number" minlength="10"
+                            maxlength="10" name="phonenumber" [(ngModel)]="SignUpFormsData.phonenumber"
+                            #phonenumber="ngModel" required>
+                        <div class="validationMessages" *ngIf="this.submit && phonenumber.errors?.['required']"
+                            class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small>Valid 10 Digit Phone Number is required</small>
+                        </div>
+                        <div class="validationMessages" *ngIf="this.submit && phonenumber.errors?.['minlength']"
+                            class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small>Valid 10 Digit Phone Number is required</small>
+                        </div>
+
+                    </div>
+                    <div class="signupcontents d-flex flex-column">
+                        <label class="align-self-start">Password <b style="color: red;">*</b></label>
+                        <input type="password" placeholder="Enter your password" minlength="6" id="password"
+                            name="password" [(ngModel)]="SignUpFormsData.password" #password="ngModel" required>
+                        <div class="validationMessages" *ngIf="this.submit && password.errors?.['required']"
+                            class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small>Valid Password is required</small>
+                        </div>
+                        <div class="validationMessages" *ngIf="this.submit && password.errors?.['minlength']"
+                            class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small>Password should be at least 6 characters</small>
+                        </div>
+
+                    </div>
+
+
+                    <br>
+                    <div class="signupcontents" id=submitbtn>
+                        <button type="submit" id="signupsubmit" (click)="submit=true">SUBMIT</button>
+                    </div>
+                    <br>
+                    <div class="loginWant">
+                        <span>Already have an account? Click </span>
+                        <button class="login" (click)="moveToLogin()">LOGIN</button>
+                    </div>
+                    <br>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

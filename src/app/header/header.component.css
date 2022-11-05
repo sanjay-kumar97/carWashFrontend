@@ -1,0 +1,31 @@
+mat-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    background-color: white;
+}
+
+ul li {
+    list-style: none;
+}
+
+button {
+    border: 0;
+    outline: none;
+    background: transparent;
+    color: black;
+}
+
+#logoutBtn {
+    color: white;
+}
+
+.user {
+    font-size: 16px;
+}
+
+.user-image {
+    border-radius: 50%;
+    margin-right: 5px;
+    margin-top: -2px;
+}

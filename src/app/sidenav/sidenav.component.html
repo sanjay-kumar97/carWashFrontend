@@ -1,0 +1,22 @@
+<mat-nav-list>
+    <div class="logo py-4">
+        <img src="image.png" alt="Logo">
+    </div>
+    <mat-divider></mat-divider>
+    <a *ngIf="!(isAdmin)" mat-list-item routerLink="/userdashboard/addbooking" routerLinkActive="list-item-active">
+        <mat-icon>add_circle_outline</mat-icon> Add Booking
+    </a>
+    <a *ngIf="!(isAdmin)" mat-list-item routerLink="/userdashboard/viewbooking">
+        <mat-icon>view_list</mat-icon> View Booking
+    </a>
+
+    <a *ngIf="isAdmin" mat-list-item routerLink="/admindashboard/addplace" routerLinkActive="list-item-active">
+        <mat-icon>add_circle_outline</mat-icon> Add Places
+    </a>
+    <a *ngIf="isAdmin" mat-list-item routerLink="/admindashboard/addservice">
+        <mat-icon>add_circle_outline</mat-icon> Add Services
+    </a>
+    <a *ngIf="isAdmin" mat-list-item routerLink="/admindashboard/viewbooking">
+        <mat-icon>view_list</mat-icon> View Bookings
+    </a>
+</mat-nav-list>

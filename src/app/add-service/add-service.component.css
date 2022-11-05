@@ -1,0 +1,52 @@
+.page {
+    color: white;
+    padding: 0 1rem;
+    background: #f1f5f9;
+    margin-top: -6px;
+    min-height: 94vh;
+    overflow: hidden !important;
+}
+
+.page__box {
+    min-height: 120px;
+    background: #1e293b;
+    margin: 0 -1rem;
+    font-size: 36px;
+}
+
+.page__content {
+    min-height: calc(100vh - 170px);
+    border-radius: 10px;
+    margin-top: -3rem;
+    background: white;
+    color: black;
+    font-size: 2rem;
+}
+
+.input-field {
+    margin-top: 150px;
+}
+
+#textArea {
+    border-radius: 25px 0 0 25px;
+    padding: 8px 15px;
+}
+
+#btnAdd {
+    color: white;
+    background-color: #1e293b;
+    width: auto;
+    height: 49px;
+    padding: 0 15px;
+    font-size: large;
+    border-color: black;
+    border-radius: 0 25px 25px 0;
+    margin-top: -5px;
+    margin-left: 1px;
+}
+
+.table {
+    width: 250px;
+    margin-top: 50px;
+    border: #1e293b;
+}

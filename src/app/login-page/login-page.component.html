@@ -1,0 +1,55 @@
+<div class="container-fluid text-center">
+    <p class="display-1">Car Wash Application</p>
+</div>
+<div class="container-fluid text-center mt-5">
+    <div class="row">
+        <div class="col-4 mx-auto">
+            <div class="loginform d-flex justify-content-center align-items-center">
+                <form id="form" action="" #LogInForm="ngForm" novalidate (ngSubmit)="LogInForm.form.valid && onLogin()">
+                    <div class="loginhead">
+                        <h1>Welcome Back!</h1>
+                    </div>
+                    <div class="logincontents d-flex flex-column">
+                        <label class="align-self-start">E-mail id <b style="color: red;">*</b></label>
+                        <input type="email" placeholder="Enter your email id" id="loginusername" name="email"
+                            [(ngModel)]="LogInFormsData.email" #email="ngModel" required email>
+                        <div class="validationMessages" *ngIf="this.submit && email.errors?.['required']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            &nbsp;
+                            <small>Valid Email-ID is required</small>
+                        </div>
+                        <div class="validationMessages" *ngIf="this.submit && email.errors?.['email']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small>Valid Email-ID is required</small>
+                        </div>
+                    </div>
+                    <div class="logincontents d-flex flex-column">
+                        <label class="align-self-start">Password <b style="color: red;">*</b></label>
+                        <input type="password" placeholder="Enter your password" minlength="6" id="loginpassword"
+                            name="password" [(ngModel)]="LogInFormsData.password" #password="ngModel" required>
+                        <div class="validationMessages" *ngIf="this.submit && password.errors?.['required']"
+                            class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            &nbsp;
+                            <small>Valid Password is required</small>
+                        </div>
+                        <div class="validationMessages" *ngIf="this.submit && password.errors?.['minlength']"
+                            class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small>Password should be at least 6 characters</small>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="logincontents">
+                        <button type="submit" id="loginsubmit" (click)="this.submit=true">LOGIN</button>
+                    </div>
+                    <br>
+                    <div class="signupWant">
+                        <span>New User? </span>
+                        <button class="register" (click)="moveToSignup()">Create an Account</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

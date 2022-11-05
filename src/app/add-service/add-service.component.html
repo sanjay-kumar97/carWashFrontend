@@ -1,0 +1,38 @@
+<div class="container-fluid page">
+    <div class="page__box p-3 mt-2">
+        <p class="mt-4">Add a Service!</p>
+    </div>
+
+    <div class="page__content shadow p-3">
+        <div class="page__content-data text-center">
+            <div class="container-fluid">
+                <div class="row">
+                    <form id="serviceForm" (ngSubmit)="addService()"
+                        class="col-12 d-flex justify-content-center align-items-center">
+                        <!-- <label>Add a Place</label> -->
+                        <div class="input-field">
+                            <input type="text" name="place" [(ngModel)]="newService" #service="ngModel" id="textArea">
+                            <button class="btn" type="submit" id="btnAdd">Add Service</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center align-items-center">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Available Services</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let i of services">
+                                <tr>
+                                    <td>{{i}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
