@@ -28,8 +28,12 @@
                                 <p class="display-3">What?</p>
                                 <input type="text" formControlName="model" name="model"
                                     placeholder="Enter your Car Model" autocomplete="off"><br>
-                                <input type="text" formControlName="service" name="service"
-                                    placeholder="Choose the type of Service" autocomplete="off"><br>
+                                <!-- <input type="text" formControlName="service" name="service"
+                                    placeholder="Choose the type of Service" autocomplete="off"><br> -->
+                                <select formControlName="service" name="service">
+                                    <option hidden selected>Choose a Service</option>
+                                    <option *ngFor="let i of services">{{i.serviceName}}</option>
+                                </select>
                                 <input (click)="previous()" type="button" name="previous"
                                     class="previous action-button-previous" value="<">
                                 <input (click)="next()" type="button" name="next" class="next action-button" value=">">
@@ -39,7 +43,8 @@
                             <fieldset *ngIf="step == 3">
                                 <p class="display-3">When?</p>
                                 <!-- <input type="text" formControlName="date" name="date" placeholder="Enter Date"><br> -->
-                                <input matInput [matDatepicker]="picker" formControlName="date">
+                                <input matInput [matDatepicker]="picker" formControlName="date"
+                                    placeholder="Pick a Date">
                                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                 <mat-datepicker #picker></mat-datepicker>
                                 <!-- <input type="text" formControlName="time" name="time" placeholder="Enter Time"><br> -->
@@ -57,7 +62,7 @@
                             <fieldset *ngIf="step == 4">
                                 <p class="display-3">Where?</p>
                                 <select formControlName="place" name="place">
-                                    <option hidden selected>Choose a Number</option>
+                                    <option hidden selected>Choose a Location</option>
                                     <option *ngFor="let i of places">{{i}}</option>
                                 </select>
                                 <input (click)="previous()" type="button" name="previous"

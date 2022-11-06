@@ -17,9 +17,9 @@ export class AddBookingComponent implements OnInit {
   carStep = false;
   locationStep = false;
   timeStep = false;
-  step = 1;
+  step = 4;
 
-  places: Array<any> = [];
+  places: Array<any> = ['Chennai', 'Hyderabad'];
   slots: Array<string> = ['Slot 1', 'Slot 2', 'Slot 3', 'Slot 4', 'Slot 5'];
   services: Array<any> = [];
 
@@ -27,12 +27,9 @@ export class AddBookingComponent implements OnInit {
 
   UserSubmitData = { name: "", model: "", service: "", location: "", date: "", time: "", phone: "", status: "Pending", userID: '' };
   isValid = false;
-  constructor(private formBuilder: FormBuilder, private cookieService: CookieService, private api: ApiService) { }
+  constructor(private formBuilder: FormBuilder, private api: ApiService) { }
 
   ngOnInit(): void {
-    let cookie_place = this.cookieService.get('placeData').split("|");
-    this.places = cookie_place;
-    console.log(this.places);
     this.userDetails = this.formBuilder.group({
       name: ['', Validators.required],
       phone: ['', Validators.required]
@@ -142,6 +139,8 @@ export class AddBookingComponent implements OnInit {
       .subscribe({
         next: (res) => {
           console.log('From Places', res);
+          // this.places = res;
+          console.log(this.places);
         },
         error: () => {
           console.log('From places', 'Error!');
@@ -152,6 +151,8 @@ export class AddBookingComponent implements OnInit {
       .subscribe({
         next: (res) => {
           console.log('From Services', res);
+          this.services = res;
+          console.log(this.services);
         },
         error: () => {
           console.log('From places', 'Error!');
