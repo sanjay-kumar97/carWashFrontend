@@ -75,6 +75,41 @@
     -webkit-transition: All 0.5s ease-in;
 }
 
+#bookingForm select {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 50%;
+    box-sizing: border-box;
+    /* font-family: montserrat; */
+    color: #2C3E50;
+    font-size: 18px;
+}
+
+select {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0.5em 2em 0.5em 0.5em;
+    border: 1px solid #eee;
+    font: inherit;
+    line-height: inherit;
+    appearance: none;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+    background-position: right 25px top 1.25em, right 20px top 1.25em;
+    background-size: 5px 5px, 5px 5px;
+}
+
+select .select-items {
+    cursor: pointer;
+}
+
+#special {
+    width: 55.5% !important;
+}
+
 #bookingForm .action-button {
     width: 45px;
     background: #ee0979;
@@ -189,7 +224,7 @@ fieldset p {
 #progressbar li:after {
     content: '';
     width: 100%;
-    height: 2px;
+    height: 6px;
     background: white;
     position: absolute;
     left: -50%;

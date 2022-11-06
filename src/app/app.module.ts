@@ -20,12 +20,19 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatNativeDateModule } from '@angular/material/core';
 import { AddBookingComponent } from './add-booking/add-booking.component';
 import { ViewBookingComponent } from './view-booking/view-booking.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddPlaceComponent } from './add-place/add-place.component';
 import { AddServiceComponent } from './add-service/add-service.component';
 import { CookieService } from 'ngx-cookie-service';
+
 
 @NgModule({
   declarations: [
@@ -55,7 +62,13 @@ import { CookieService } from 'ngx-cookie-service';
     MatIconModule,
     MatDividerModule,
     MatListModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

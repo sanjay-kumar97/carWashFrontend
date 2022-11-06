@@ -14,7 +14,7 @@ export class LoginPageComponent implements OnInit {
 
   submit = false;
   LogInFormsData = { email: "", password: "" };
-  UID!: string;
+  UID: string = '';
   isAdmin: boolean | undefined;
   ngOnInit(): void {
   }
@@ -29,6 +29,8 @@ export class LoginPageComponent implements OnInit {
       next: data => {
         this.auth.storeToken(data.idToken);
         this.UID = data.localId.toString();
+        console.log("UserId", this.UID);
+        sessionStorage.setItem('UID', this.UID);
         console.log('Login Success!');
         Swal.fire(
           'Success!',

@@ -11,27 +11,27 @@
                         class="col-12 d-flex justify-content-center align-items-center">
                         <!-- <label>Add a Place</label> -->
                         <div class="input-field">
-                            <input type="text" name="place" [(ngModel)]="newPlace.placeName" #place="ngModel"
-                                id="textArea">
+                            <input type="text" name="place" [(ngModel)]="newPlace" #place="ngModel" id="textArea">
                             <button class="btn" type="submit" id="btnAdd">Add Place</button>
                         </div>
                     </form>
                 </div>
                 <div class="row">
-                    <div class="col-12 d-flex justify-content-center align-items-center">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Available Places</th>
-                                </tr>
-                            </thead>
-                            <tbody *ngFor="let i of places">
-                                <tr>
-                                    <td>{{i}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mx-auto">
+                        <ng-container matColumnDef="id">
+                            <th mat-header-cell *matHeaderCellDef> No. </th>
+                            <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+                        </ng-container>
+
+                        <!-- Name Column -->
+                        <ng-container matColumnDef="place">
+                            <th mat-header-cell *matHeaderCellDef> Available Places </th>
+                            <td mat-cell *matCellDef="let row"> {{row.place}} </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
                 </div>
             </div>
         </div>

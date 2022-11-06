@@ -1,0 +1,37 @@
+{
+  "bookingData": [
+    {
+      "name": "Sanjay Kumar",
+      "model": "Volks Polo",
+      "service": "Wash",
+      "location": "Ambattur",
+      "date": "10/11/2022",
+      "time": "Slot 3",
+      "phone": 9865324512,
+      "status": "Approved",
+      "userID": "l6n0Q764VHZMNeMWF1JLUQkx8bJ3",
+      "id": 1
+    }
+  ],
+  "serviceData": [
+    {
+      "serviceName": "Normal Wash",
+      "id": 1
+    },
+    {
+      "serviceName": "Foam Wash",
+      "id": 2
+    }
+  ],
+  "locationData": [],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

@@ -19,7 +19,7 @@ const routes: Routes = [
     path: 'userdashboard',
     component: UserDashboardComponent,
     children: [
-      { path: '', redirectTo: 'addbooking', pathMatch: 'full' },
+      { path: '', redirectTo: 'viewbooking', pathMatch: 'full' },
       { path: 'addbooking', component: AddBookingComponent },
       { path: 'viewbooking', component: ViewBookingComponent }
     ]

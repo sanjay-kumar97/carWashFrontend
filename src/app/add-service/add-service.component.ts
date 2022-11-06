@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
+import { MatTableDataSource } from '@angular/material/table';
+import { ApiService } from '../service/api.service';
 
 @Component({
   selector: 'app-add-service',
@@ -8,24 +9,56 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class AddServiceComponent implements OnInit {
 
-  newService: string = "";
-  services: Array<any> = [];
-  constructor(private cookieService: CookieService) { }
+  serviceData = { serviceName: '' };
+  displayedColumns: string[] = ['id', 'service', 'action'];
+  dataSource!: MatTableDataSource<any>;
+  constructor(private api: ApiService) { }
 
   ngOnInit(): void {
-    let cookie_service = this.cookieService.get('serviceData').split("|");
-    this.services = cookie_service;
-    console.log(this.services);
+    this.getServiceData();
   }
 
   addService() {
-    const service_data = this.cookieService.get('serviceData');
-    if (!service_data) {
-      this.cookieService.set('serviceData', (this.newService).toString());
-    } else {
-      this.cookieService.set('serviceData', service_data + "|" + (this.newService).toString());
-    }
-    console.log(this.cookieService.get('serviceData'));
+    this.putServiceData(this.serviceData);
+    console.log('Added:', this.serviceData.serviceName);
+    window.location.reload();
+  }
+
+  putServiceData(data: any) {
+    this.api.postService(data)
+      .subscribe({
+        next: (res) => {
+          console.log('From addService:', 'Success!');
+        },
+        error: () => {
+          console.log('From addService:', "Error");
+        }
+      })
+  }
+
+  getServiceData() {
+    this.api.getService()
+      .subscribe({
+        next: (res) => {
+          console.log('From getService:', 'Success!', res);
+          this.dataSource = new MatTableDataSource(res);
+        },
+        error: () => {
+          console.log('From getService:', "Error");
+        }
+      })
+  }
+
+  deleteService(id: number) {
+    this.api.deleteService(id)
+      .subscribe({
+        next: (res) => {
+          console.log('From deleteService:', 'Success!');
+        },
+        error: () => {
+          console.log('From dleteService:', 'Error!');
+        }
+      })
     window.location.reload();
   }
 }

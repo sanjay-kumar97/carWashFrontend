@@ -45,8 +45,12 @@
     margin-left: 1px;
 }
 
-.table {
-    width: 250px;
+table {
+    width: 25%;
     margin-top: 50px;
-    border: #1e293b;
+}
+
+td,
+th {
+    width: 50%;
 }

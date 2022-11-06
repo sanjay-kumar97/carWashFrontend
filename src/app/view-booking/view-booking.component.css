@@ -23,8 +23,16 @@
     font-size: 2rem;
 }
 
-.page__content-data {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+#approveBtn {
+    /* border-radius: 50px; */
+    background: transparent;
+    color: green;
+    border: 0;
+}
+
+#declineBtn {
+    margin-left: 10px;
+    background: transparent;
+    color: red;
+    border: 0;
 }

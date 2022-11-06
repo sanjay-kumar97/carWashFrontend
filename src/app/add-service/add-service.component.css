@@ -45,8 +45,14 @@
     margin-left: 1px;
 }
 
-.table {
-    width: 250px;
+table {
+    width: 30%;
     margin-top: 50px;
-    border: #1e293b;
+}
+
+#deleteBtn {
+    background: transparent;
+    border: none;
+    color: orangered;
+    margin-left: 5px;
 }

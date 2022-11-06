@@ -3,11 +3,11 @@
         <img src="image.png" alt="Logo">
     </div>
     <mat-divider></mat-divider>
-    <a *ngIf="!(isAdmin)" mat-list-item routerLink="/userdashboard/addbooking" routerLinkActive="list-item-active">
-        <mat-icon>add_circle_outline</mat-icon> Add Booking
-    </a>
-    <a *ngIf="!(isAdmin)" mat-list-item routerLink="/userdashboard/viewbooking">
+    <a *ngIf="!(isAdmin)" mat-list-item routerLink="/userdashboard/viewbooking" routerLinkActive="list-item-active">
         <mat-icon>view_list</mat-icon> View Booking
+    </a>
+    <a *ngIf="!(isAdmin)" mat-list-item routerLink="/userdashboard/addbooking">
+        <mat-icon>add_circle_outline</mat-icon> Add Booking
     </a>
 
     <a *ngIf="isAdmin" mat-list-item routerLink="/admindashboard/addplace" routerLinkActive="list-item-active">

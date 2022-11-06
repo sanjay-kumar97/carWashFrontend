@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
+import { ApiService } from '../service/api.service';
 @Component({
   selector: 'app-add-booking',
   templateUrl: './add-booking.component.html',
@@ -17,11 +19,20 @@ export class AddBookingComponent implements OnInit {
   timeStep = false;
   step = 1;
 
-  UserSubmitData = { name: "", model: "", service: "", location: "", date: "", time: "", phone: "" };
+  places: Array<any> = [];
+  slots: Array<string> = ['Slot 1', 'Slot 2', 'Slot 3', 'Slot 4', 'Slot 5'];
+  services: Array<any> = [];
+
+  UserID = sessionStorage.getItem('UID');
+
+  UserSubmitData = { name: "", model: "", service: "", location: "", date: "", time: "", phone: "", status: "Pending", userID: '' };
   isValid = false;
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private cookieService: CookieService, private api: ApiService) { }
 
   ngOnInit(): void {
+    let cookie_place = this.cookieService.get('placeData').split("|");
+    this.places = cookie_place;
+    console.log(this.places);
     this.userDetails = this.formBuilder.group({
       name: ['', Validators.required],
       phone: ['', Validators.required]
@@ -37,6 +48,7 @@ export class AddBookingComponent implements OnInit {
       date: ['', Validators.required],
       time: ['', Validators.required]
     });
+    this.getPlacesAndServices();
   }
 
   get user() {
@@ -89,10 +101,62 @@ export class AddBookingComponent implements OnInit {
     if (this.step == 4) {
       this.locationStep = true;
       if (this.locationDetails.invalid) { return; }
+      console.log(this.locationDetails.value.place);
+      this.onUserSubmit();
       alert("Done!");
     }
   }
   onUserSubmit() {
+    this.UserSubmitData.name = this.userDetails.value.name;
+    this.UserSubmitData.phone = this.userDetails.value.phone;
+    this.UserSubmitData.model = this.carDetails.value.model;
+    this.UserSubmitData.service = this.carDetails.value.service;
+    this.UserSubmitData.date = this.timeDetails.value.date.toLocaleDateString();
+    this.UserSubmitData.time = this.timeDetails.value.time;
+    this.UserSubmitData.location = this.locationDetails.value.place;
+    this.UserSubmitData.userID = (this.UserID)?.toString()!;
+    console.log(this.UserSubmitData);
+    const userData = localStorage.getItem(this.UserID!);
+    if (!userData) {
+      localStorage.setItem(this.UserID!, JSON.stringify(this.UserSubmitData));
+    } else {
+      localStorage.setItem(this.UserID!, userData + "|" + JSON.stringify(this.UserSubmitData));
+    }
+    this.addData(this.UserSubmitData);
+  }
 
+  addData(data: any) {
+    this.api.postData(data)
+      .subscribe({
+        next: (res) => {
+          console.log('Success!');
+        },
+        error: () => {
+          console.log("Error");
+        }
+      })
+  }
+
+  getPlacesAndServices() {
+    this.api.getPlace()
+      .subscribe({
+        next: (res) => {
+          console.log('From Places', res);
+        },
+        error: () => {
+          console.log('From places', 'Error!');
+        }
+      })
+
+    this.api.getService()
+      .subscribe({
+        next: (res) => {
+          console.log('From Services', res);
+        },
+        error: () => {
+          console.log('From places', 'Error!');
+        }
+      })
   }
 }
+
