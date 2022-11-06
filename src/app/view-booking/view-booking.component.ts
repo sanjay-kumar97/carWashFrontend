@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from '../service/api.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -13,27 +12,32 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class ViewBookingComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'model', 'service', 'location', 'date', 'time', 'phone', 'status', 'action'];
+  displayedColumns: string[] = ['id', 'name', 'model', 'service', 'location', 'date', 'time', 'phone', 'status'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private cookieService: CookieService, private api: ApiService) { }
+  constructor(private api: ApiService) { }
 
   bookingData: Array<any> = [];
+  UserId: any;
+  isAdmin!: boolean;
 
   ngOnInit(): void {
-    let cookie_data = this.cookieService.get("data").split("|");
-    for (let i = 0; i < cookie_data.length; i++) {
-      cookie_data[i] = JSON.parse(cookie_data[i]);
-    }
-    // $scopes.cookie_data = cookie_data;
-    this.bookingData = cookie_data;
-    this.getAllData();
+    this.getBookingData();
+    this.UserId = sessionStorage.getItem('UID');
+    this.checkAdmin();
+    this.isAdmin = sessionStorage.getItem('Validator') == 'true' ? true : false;
   }
 
-  getAllData() {
+  checkAdmin() {
+    this.isAdmin = sessionStorage.getItem('Validator') == 'true' ? true : false;
+    if (this.isAdmin) {
+      this.displayedColumns = ['id', 'name', 'model', 'service', 'location', 'date', 'time', 'phone', 'status', 'action'];
+    }
+  }
+  getBookingData() {
     this.api.getData()
       .subscribe({
         next: (res) => {
