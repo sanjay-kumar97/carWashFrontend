@@ -19,6 +19,7 @@ export class UserDashboardComponent implements OnInit {
       this.auth.getUserDetails().subscribe({
         next: data => {
           this.user.displayName = data.users[0].displayName;
+          sessionStorage.setItem('userName', this.user.displayName);
         }
       })
     }

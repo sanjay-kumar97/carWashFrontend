@@ -14,6 +14,7 @@ export class ViewBookingComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'model', 'service', 'location', 'date', 'time', 'phone', 'status'];
   dataSource!: MatTableDataSource<any>;
+  dataFromJson: any;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -29,6 +30,7 @@ export class ViewBookingComponent implements OnInit {
     this.UserId = sessionStorage.getItem('UID');
     this.checkAdmin();
     this.isAdmin = sessionStorage.getItem('Validator') == 'true' ? true : false;
+    console.log('User ID:', this.UserId);
   }
 
   checkAdmin() {
@@ -42,7 +44,9 @@ export class ViewBookingComponent implements OnInit {
       .subscribe({
         next: (res) => {
           console.log(res);
-          this.dataSource = new MatTableDataSource(res);
+          this.dataFromJson = res;
+          // this.filterBasedOnUser();
+          this.dataSource = new MatTableDataSource(this.dataFromJson);
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
         },
@@ -85,6 +89,20 @@ export class ViewBookingComponent implements OnInit {
           console.log('Error in Updating Status');
         }
       })
+  }
+
+  filterBasedOnUser() {
+    console.log('Before', this.dataFromJson);
+    for (let i = 0; i < this.dataFromJson.length; i++) {
+      let x = (this.dataFromJson[i].userID).toString();
+      if (x == this.UserId) {
+        console.log(x, 'true');
+      } else {
+        delete this.dataFromJson[i];
+      }
+    }
+    console.log('After', this.dataFromJson);
+
   }
 
 }

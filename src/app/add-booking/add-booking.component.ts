@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
+import { from } from 'rxjs';
 import { ApiService } from '../service/api.service';
 @Component({
   selector: 'app-add-booking',
@@ -17,9 +18,9 @@ export class AddBookingComponent implements OnInit {
   carStep = false;
   locationStep = false;
   timeStep = false;
-  step = 4;
+  step = 1;
 
-  places: Array<any> = ['Chennai', 'Hyderabad'];
+  places: Array<any> = [];
   slots: Array<string> = ['Slot 1', 'Slot 2', 'Slot 3', 'Slot 4', 'Slot 5'];
   services: Array<any> = [];
 
@@ -46,6 +47,7 @@ export class AddBookingComponent implements OnInit {
       time: ['', Validators.required]
     });
     this.getPlacesAndServices();
+    console.log('from here :/', this.places);
   }
 
   get user() {
@@ -77,6 +79,7 @@ export class AddBookingComponent implements OnInit {
       this.timeStep = true;
       if (this.timeDetails.invalid) { return; }
       this.step += 1;
+      console.log('from here :|', this.places);
     }
     console.log(this.step);
   }
@@ -103,6 +106,7 @@ export class AddBookingComponent implements OnInit {
       alert("Done!");
     }
   }
+
   onUserSubmit() {
     this.UserSubmitData.name = this.userDetails.value.name;
     this.UserSubmitData.phone = this.userDetails.value.phone;
@@ -139,8 +143,8 @@ export class AddBookingComponent implements OnInit {
       .subscribe({
         next: (res) => {
           console.log('From Places', res);
-          // this.places = res;
-          console.log(this.places);
+          this.places = res;
+          console.log('From here', this.places);
         },
         error: () => {
           console.log('From places', 'Error!');
@@ -160,4 +164,3 @@ export class AddBookingComponent implements OnInit {
       })
   }
 }
-

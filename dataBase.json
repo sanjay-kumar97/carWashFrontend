@@ -1,6 +1,41 @@
 {
   "bookingData": [
-    
+    {
+      "name": "Peter",
+      "model": "Volkswagen Polo",
+      "service": "Normal Wash",
+      "location": "Chennai",
+      "date": "08/11/2022",
+      "time": "Slot 2",
+      "phone": 9865327845,
+      "status": "Pending",
+      "userID": "l6n0Q764VHZMNeMWF1JLUQkx8bJ3",
+      "id": 1
+    },
+    {
+      "name": "Peter",
+      "model": "Volkswagen Polo",
+      "service": "Full Service Wash",
+      "location": "Chennai",
+      "date": "12/11/2022",
+      "time": "Slot 3",
+      "phone": 9865327845,
+      "status": "Pending",
+      "userID": "l6n0Q764VHZMNeMWF1JLUQkx8bJ3",
+      "id": 2
+    },
+    {
+      "name": "John",
+      "model": "Toyota Lancer",
+      "service": "Foam Wash",
+      "location": "Hyderabad",
+      "date": "08/11/2022",
+      "time": "Slot 5",
+      "phone": 9845327015,
+      "status": "Pending",
+      "userID": "o2b5ku82BuR3gmZfaF79p3AyQZo2",
+      "id": 3
+    }
   ],
   "serviceData": [
     {
@@ -10,9 +45,38 @@
     {
       "serviceName": "Foam Wash",
       "id": 2
+    },
+    {
+      "serviceName": "Exterior Wash",
+      "id": 3
+    },
+    {
+      "serviceName": "Full Service Wash",
+      "id": 4
     }
   ],
-  "locationData": [],
+  "locationData": [
+    {
+      "placeName": "Chennai",
+      "id": 1
+    },
+    {
+      "placeName": "Hyderabad",
+      "id": 2
+    },
+    {
+      "placeName": "Bangalore",
+      "id": 3
+    },
+    {
+      "placeName": "Goa",
+      "id": 4
+    },
+    {
+      "placeName": "Mumbai",
+      "id": 5
+    }
+  ],
   "comments": [
     {
       "id": 1,
