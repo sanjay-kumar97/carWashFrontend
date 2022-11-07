@@ -14,7 +14,7 @@ export class ViewBookingComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'model', 'service', 'location', 'date', 'time', 'phone', 'status'];
   dataSource!: MatTableDataSource<any>;
-  dataFromJson: any;
+  dataFromJson: Array<any> = [];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -28,13 +28,13 @@ export class ViewBookingComponent implements OnInit {
   ngOnInit(): void {
     this.getBookingData();
     this.UserId = sessionStorage.getItem('UID');
+    // this.isAdmin = sessionStorage.getItem('validator') == 'true' ? true : false;
     this.checkAdmin();
-    this.isAdmin = sessionStorage.getItem('Validator') == 'true' ? true : false;
     console.log('User ID:', this.UserId);
   }
 
   checkAdmin() {
-    this.isAdmin = sessionStorage.getItem('Validator') == 'true' ? true : false;
+    this.isAdmin = sessionStorage.getItem('validator') == 'true' ? true : false;
     if (this.isAdmin) {
       this.displayedColumns = ['id', 'name', 'model', 'service', 'location', 'date', 'time', 'phone', 'status', 'action'];
     }
@@ -43,7 +43,36 @@ export class ViewBookingComponent implements OnInit {
     this.api.getData()
       .subscribe({
         next: (res) => {
-          console.log(res);
+          console.log(this.isAdmin, res);
+          // if (!this.isAdmin) {
+          //   // this.getUserBookingData();
+          this.dataSource = new MatTableDataSource(res);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+          // } else {
+          //   this.dataSource = new MatTableDataSource(res);
+          //   this.dataSource.paginator = this.paginator;
+          //   this.dataSource.sort = this.sort;
+          // }
+
+          for (let i = 0; i < res.length; i++) {
+            this.dataFromJson[i] = res[i];
+          }
+          console.log('From GET :D', this.dataFromJson);
+          // this.filterBasedOnUser();
+
+        },
+        error: () => {
+          console.log('Error');
+        }
+      })
+  }
+
+  getUserBookingData() {
+    this.api.getUserData(this.UserId)
+      .subscribe({
+        next: (res) => {
+          console.log('From UserData :)', res);
           this.dataFromJson = res;
           // this.filterBasedOnUser();
           this.dataSource = new MatTableDataSource(this.dataFromJson);
@@ -72,11 +101,19 @@ export class ViewBookingComponent implements OnInit {
     this.updateStatus(data);
   }
 
+  approveUserStatus(data: any) {
+
+  }
+
   rejectStatus(data: any) {
     console.log('Rejected');
     data.status = 'Rejected';
     console.log('After Update', data);
     this.updateStatus(data);
+  }
+
+  rejectUserStatus(data: any) {
+
   }
 
   updateStatus(data: any) {

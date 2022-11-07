@@ -124,10 +124,23 @@ export class AddBookingComponent implements OnInit {
       localStorage.setItem(this.UserID!, userData + "|" + JSON.stringify(this.UserSubmitData));
     }
     this.addData(this.UserSubmitData);
+    this.addUserData(this.UserSubmitData, this.UserSubmitData.userID);
   }
 
   addData(data: any) {
     this.api.postData(data)
+      .subscribe({
+        next: (res) => {
+          console.log('Success!');
+        },
+        error: () => {
+          console.log("Error");
+        }
+      })
+  }
+
+  addUserData(data: any, uid: string) {
+    this.api.postUserData(data, uid)
       .subscribe({
         next: (res) => {
           console.log('Success!');

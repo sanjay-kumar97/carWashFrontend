@@ -3,37 +3,37 @@
     {
       "name": "Peter",
       "model": "Volkswagen Polo",
-      "service": "Normal Wash",
-      "location": "Chennai",
+      "service": "Foam Wash",
+      "location": "Hyderabad",
       "date": "08/11/2022",
-      "time": "Slot 2",
-      "phone": 9865327845,
-      "status": "Pending",
+      "time": "Slot 1",
+      "phone": 9845325019,
+      "status": "Rejected",
       "userID": "l6n0Q764VHZMNeMWF1JLUQkx8bJ3",
       "id": 1
     },
     {
       "name": "Peter",
       "model": "Volkswagen Polo",
-      "service": "Full Service Wash",
+      "service": "Exterior Wash",
       "location": "Chennai",
-      "date": "12/11/2022",
+      "date": "10/11/2022",
       "time": "Slot 3",
-      "phone": 9865327845,
-      "status": "Pending",
+      "phone": 9865324512,
+      "status": "Approved",
       "userID": "l6n0Q764VHZMNeMWF1JLUQkx8bJ3",
       "id": 2
     },
     {
-      "name": "John",
-      "model": "Toyota Lancer",
-      "service": "Foam Wash",
-      "location": "Hyderabad",
-      "date": "08/11/2022",
-      "time": "Slot 5",
-      "phone": 9845327015,
-      "status": "Pending",
-      "userID": "o2b5ku82BuR3gmZfaF79p3AyQZo2",
+      "name": "Peter",
+      "model": "Benzz",
+      "service": "Full Service Wash",
+      "location": "Goa",
+      "date": "10/11/2022",
+      "time": "Slot 3",
+      "phone": 9865324512,
+      "status": "Rejected",
+      "userID": "l6n0Q764VHZMNeMWF1JLUQkx8bJ3",
       "id": 3
     }
   ],
@@ -75,6 +75,50 @@
     {
       "placeName": "Mumbai",
       "id": 5
+    },
+    {
+      "placeName": "Delhi",
+      "id": 6
+    }
+  ],
+  "Zvre89kqWSdt9JVoHr4RJrTrulC3": [],
+  "o2b5ku82BuR3gmZfaF79p3AyQZo2": [],
+  "l6n0Q764VHZMNeMWF1JLUQkx8bJ3": [
+    {
+      "name": "Peter",
+      "model": "Volkswagen Polo",
+      "service": "Foam Wash",
+      "location": "Hyderabad",
+      "date": "08/11/2022",
+      "time": "Slot 1",
+      "phone": 9845325019,
+      "status": "Pending",
+      "userID": "l6n0Q764VHZMNeMWF1JLUQkx8bJ3",
+      "id": 1
+    },
+    {
+      "name": "Peter",
+      "model": "Volkswagen Polo",
+      "service": "Exterior Wash",
+      "location": "Chennai",
+      "date": "10/11/2022",
+      "time": "Slot 3",
+      "phone": 9865324512,
+      "status": "Pending",
+      "userID": "l6n0Q764VHZMNeMWF1JLUQkx8bJ3",
+      "id": 2
+    },
+    {
+      "name": "Peter",
+      "model": "Benzz",
+      "service": "Full Service Wash",
+      "location": "Goa",
+      "date": "10/11/2022",
+      "time": "Slot 3",
+      "phone": 9865324512,
+      "status": "Pending",
+      "userID": "l6n0Q764VHZMNeMWF1JLUQkx8bJ3",
+      "id": 3
     }
   ],
   "comments": [

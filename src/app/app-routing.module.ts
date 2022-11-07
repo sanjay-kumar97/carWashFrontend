@@ -7,6 +7,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
+import { TableComponent } from './table/table.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { ViewBookingComponent } from './view-booking/view-booking.component';
 
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'Home', component: HomePageComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: RegisterPageComponent },
+  { path: 'table', component: TableComponent },
   {
     path: 'userdashboard',
     component: UserDashboardComponent,

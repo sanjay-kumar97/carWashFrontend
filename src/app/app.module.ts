@@ -32,6 +32,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AddPlaceComponent } from './add-place/add-place.component';
 import { AddServiceComponent } from './add-service/add-service.component';
 import { CookieService } from 'ngx-cookie-service';
+import { TableComponent } from './table/table.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { CookieService } from 'ngx-cookie-service';
     AddBookingComponent,
     ViewBookingComponent,
     AddPlaceComponent,
-    AddServiceComponent
+    AddServiceComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,

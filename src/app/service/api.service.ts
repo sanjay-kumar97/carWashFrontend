@@ -25,6 +25,22 @@ export class ApiService {
     return this.http.delete<any>("http://localhost:3000/bookingData/" + id);
   }
 
+  postUserData(data: any, uid: string) {
+    return this.http.post<any>("http://localhost:3000/" + uid, data);
+  }
+
+  getUserData(uid: any) {
+    return this.http.get<any>("http://localhost:3000/" + uid);
+  }
+
+  updateUserData(data: any, id: number, uid: any) {
+    return this.http.put<any>("http://localhost:3000/" + uid + id, data);
+  }
+
+  deleteUserData(id: number, uid: any) {
+    return this.http.delete<any>("http://localhost:3000/" + uid + id);
+  }
+
   postPlace(data: any) {
     return this.http.post<any>("http://localhost:3000/locationData/", data);
   }
