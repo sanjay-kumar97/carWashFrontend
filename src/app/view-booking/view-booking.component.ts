@@ -141,5 +141,11 @@ export class ViewBookingComponent implements OnInit {
     console.log('After', this.dataFromJson);
 
   }
+  key: string = 'id';
+  reverse: boolean = false;
+  Sort(key: string) {
+    this.key = key;
+    this.reverse = !this.reverse;
+  }
 
 }

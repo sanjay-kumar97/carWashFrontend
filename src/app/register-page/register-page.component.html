@@ -15,11 +15,11 @@
                             [(ngModel)]="SignUpFormsData.name" #name="ngModel" required>
 
                         <div class="validationMessages" *ngIf="this.submit && name.errors?.['required']" class="error">
-                            <i class="bi-exclamation-circle-fill"></i>
+                            <i class="bi-exclamation-circle-fill"></i>&nbsp;
                             <small>Valid Name is required</small>
                         </div>
                         <div class="validationMessages" *ngIf="this.submit && name.errors?.['minlength']" class="error">
-                            <i class="bi-exclamation-circle-fill"></i>
+                            <i class="bi-exclamation-circle-fill"></i>&nbsp;
                             <small>Name must have minimum 3 letters</small>
                         </div>
                     </div>
@@ -28,11 +28,11 @@
                         <input type="email" placeholder="Enter your email id" name="email" id="emailId"
                             [(ngModel)]="SignUpFormsData.email" #email="ngModel" required email>
                         <div class="validationMessages" *ngIf="this.submit && email.errors?.['required']" class="error">
-                            <i class="bi-exclamation-circle-fill"></i>
+                            <i class="bi-exclamation-circle-fill"></i>&nbsp;
                             <small>Valid Email-ID is required</small>
                         </div>
                         <div class="validationMessages" *ngIf="this.submit && email.errors?.['email']" class="error">
-                            <i class="bi-exclamation-circle-fill"></i>
+                            <i class="bi-exclamation-circle-fill"></i>&nbsp;
                             <small>Valid Email-ID is required</small>
                         </div>
 
@@ -44,12 +44,12 @@
                             #phonenumber="ngModel" required>
                         <div class="validationMessages" *ngIf="this.submit && phonenumber.errors?.['required']"
                             class="error">
-                            <i class="bi-exclamation-circle-fill"></i>
+                            <i class="bi-exclamation-circle-fill"></i>&nbsp;
                             <small>Valid 10 Digit Phone Number is required</small>
                         </div>
                         <div class="validationMessages" *ngIf="this.submit && phonenumber.errors?.['minlength']"
                             class="error">
-                            <i class="bi-exclamation-circle-fill"></i>
+                            <i class="bi-exclamation-circle-fill"></i>&nbsp;
                             <small>Valid 10 Digit Phone Number is required</small>
                         </div>
 
@@ -60,12 +60,12 @@
                             name="password" [(ngModel)]="SignUpFormsData.password" #password="ngModel" required>
                         <div class="validationMessages" *ngIf="this.submit && password.errors?.['required']"
                             class="error">
-                            <i class="bi-exclamation-circle-fill"></i>
+                            <i class="bi-exclamation-circle-fill"></i>&nbsp;
                             <small>Valid Password is required</small>
                         </div>
                         <div class="validationMessages" *ngIf="this.submit && password.errors?.['minlength']"
                             class="error">
-                            <i class="bi-exclamation-circle-fill"></i>
+                            <i class="bi-exclamation-circle-fill"></i>&nbsp;
                             <small>Password should be at least 6 characters</small>
                         </div>
 

@@ -3,6 +3,9 @@ import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
 import { CookieService } from 'ngx-cookie-service';
 import { from } from 'rxjs';
 import { ApiService } from '../service/api.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-add-booking',
   templateUrl: './add-booking.component.html',
@@ -28,7 +31,7 @@ export class AddBookingComponent implements OnInit {
 
   UserSubmitData = { name: "", model: "", service: "", location: "", date: "", time: "", phone: "", status: "Pending", userID: '' };
   isValid = false;
-  constructor(private formBuilder: FormBuilder, private api: ApiService) { }
+  constructor(private formBuilder: FormBuilder, private api: ApiService, private route: Router) { }
 
   ngOnInit(): void {
     this.userDetails = this.formBuilder.group({
@@ -103,7 +106,21 @@ export class AddBookingComponent implements OnInit {
       if (this.locationDetails.invalid) { return; }
       console.log(this.locationDetails.value.place);
       this.onUserSubmit();
-      alert("Done!");
+      Swal.fire({
+        text: 'Your Booking has been added successfully!',
+        icon: 'success',
+        showCancelButton: true,
+        cancelButtonText: 'View Bookings',
+        confirmButtonText: 'Add another Booking',
+        cancelButtonColor: 'Green'
+        // buttons: ['Okay', 'No']
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.reload();
+        } else {
+          this.route.navigate(['/userdashboard/viewbooking']);
+        }
+      });
     }
   }
 

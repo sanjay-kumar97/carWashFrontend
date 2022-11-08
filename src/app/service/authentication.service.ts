@@ -67,6 +67,7 @@ export class AuthenticationService {
   AfterLogOutMoveToHome() {
     if (this.isAuthenticated()) {
       this.route.navigate(['Home']);
+      sessionStorage.setItem('UID', '');
       Swal.fire(
         'Success!',
         'Logged Out Successfully',

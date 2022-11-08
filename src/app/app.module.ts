@@ -33,6 +33,9 @@ import { AddPlaceComponent } from './add-place/add-place.component';
 import { AddServiceComponent } from './add-service/add-service.component';
 import { CookieService } from 'ngx-cookie-service';
 import { TableComponent } from './table/table.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { Ng2OrderModule } from 'ng2-order-pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -70,7 +73,10 @@ import { TableComponent } from './table/table.component';
     MatTableModule,
     MatFormFieldModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    Ng2SearchPipeModule,
+    Ng2OrderModule,
+    NgxPaginationModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

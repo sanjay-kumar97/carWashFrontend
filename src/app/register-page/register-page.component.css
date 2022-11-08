@@ -5,10 +5,10 @@
 }
 
 form {
-    margin-top: 100px;
+    margin-top: 50px;
     padding: 50px;
     /* background-color: rgb(29, 36, 42); */
-    background-color: #0f172a;
+    background-color: #101f41;
     min-width: 450px;
     border-radius: 10px;
     color: white;
@@ -43,4 +43,8 @@ form {
 
 .login:hover {
     text-decoration: underline;
+}
+
+i {
+    color: red;
 }

@@ -90,7 +90,7 @@
                         style="width: 80%;">
                         <thead class="table-dark">
                             <tr>
-                                <th>No.</th>
+                                <!-- <th (click)="Sort('id')">No.</th> -->
                                 <th>Name</th>
                                 <th>Model</th>
                                 <th>Service</th>
@@ -103,7 +103,7 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let row of dataFromJson; let i = index;">
-                                <td *ngIf="UserId == row.userID">{{i+1}}</td>
+                                <!-- <td *ngIf="UserId == row.userID">{{i+1}}</td> -->
                                 <td *ngIf="UserId == row.userID">{{row.name}}</td>
                                 <td *ngIf="UserId == row.userID">{{row.model}}</td>
                                 <td *ngIf="UserId == row.userID">{{row.service}}</td>

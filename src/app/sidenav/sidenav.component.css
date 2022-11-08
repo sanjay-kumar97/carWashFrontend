@@ -1,5 +1,13 @@
 .logo {
     text-align: center;
+    max-height: 6.85vh;
+    min-height: 6.85vh;
+    margin-top: -1vh;
+}
+
+.logo img {
+    width: 100px;
+    margin-top: -5px;
 }
 
 .mat-icon {
@@ -15,7 +23,7 @@
 
 .mat-list-item {
     text-align: center;
-    color: #94a3b8;
+    color: white;
     font-size: 1.25rem;
     height: 44px !important;
     margin-bottom: 4px;
@@ -24,5 +32,5 @@
 }
 
 .mat-list-item:hover {
-    background: #2c3344;
+    background: #182a55;
 }

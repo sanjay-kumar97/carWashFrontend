@@ -8,15 +8,12 @@
     background-image: url('https://images.pexels.com/photos/1550564/pexels-photo-1550564.jpeg?cs=srgb&dl=pexels-steve-johnson-1550564.jpg&fm=jpg');
     background-size: cover;
 } */
-
-.display-1 {
-    color: #101f41 !important;
-    font-weight: 400;
-    mix-blend-mode: darken;
+i {
+    color: red;
 }
 
 form {
-    margin-top: 100px;
+    margin-top: 50px;
     padding: 50px;
     /* background-color: rgb(29, 36, 42); */
     background-color: #101f41;

@@ -1,5 +1,5 @@
 <div id="hello">
-    <div class="container-fluid text-center" style="min-height: 10vh; padding-top: 50px;">
+    <div class="container-fluid text-center">
         <p class="display-1 text-dark">Car Wash Application</p>
     </div>
     <div class="container-fluid text-center mt-5">
@@ -24,6 +24,7 @@
                             <div class="validationMessages" *ngIf="this.submit && email.errors?.['email']"
                                 class="error">
                                 <i class="bi-exclamation-circle-fill"></i>
+                                &nbsp;
                                 <small>Valid Email-ID is required</small>
                             </div>
                         </div>
@@ -40,6 +41,7 @@
                             <div class="validationMessages" *ngIf="this.submit && password.errors?.['minlength']"
                                 class="error">
                                 <i class="bi-exclamation-circle-fill"></i>
+                                &nbsp;
                                 <small>Password should be at least 6 characters</small>
                             </div>
                         </div>
