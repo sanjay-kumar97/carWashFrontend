@@ -6,19 +6,24 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from '../service/api.service';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
+
 export class TableComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'model', 'service', 'location'];
   dataSource!: MatTableDataSource<any>;
   options = ['Slot 1', 'Slot 2', 'Slot 3', 'Slot 4', 'Slot 5'];
-  disabledOptions = ['Slot 3', 'Slot 5'];
+  disabledOptions = [''];
   butDisabled = false;
+  data !: FormGroup;
+  selectedDate!: string;
+  selectedTime: string = '';
+  dateFromJson: any;
   // dateVal = new FormControl('');
   // car: { id: string, name: string } = {
   //   id: "1",
@@ -30,12 +35,18 @@ export class TableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private route: Router, private api: ApiService) {
+  constructor(private route: Router, private api: ApiService, private fb: FormBuilder) {
 
   }
   ngOnInit(): void {
     this.getBookingData();
+    this.getDates();
+    this.data = this.fb.group({
+      dateVal: ['', Validators.required],
+      timeVal: ['', Validators.required]
+    });
   }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -108,10 +119,29 @@ export class TableComponent implements OnInit {
         break;
     }
   }
+
   onBtnClick() {
-    let dates = { "date_1": ['Slot 1', 'Slot 2', 'Slot 5'], "date_2": ['Slot 3', 'Slot 4'] };
-    dates
-    this.api.postDate(dates)
+    var dates = { "date_1": ['Slot 1', 'Slot 2', 'Slot 5'], "date_2": ['Slot 3', 'Slot 4'] };
+    console.log(dates);
+    // dates.date_3 = ['Slot 2', 'Slot 5'];
+    // dates.date_2.push('Slot 1');
+    // Object.assign("date_3", ['Slot 2', 'Slot 5']);
+    // dates.date_3 = ['Slot 2', 'Slot 5'];
+    // console.log(dates);
+    var date: { [k: string]: string[] } = this.dateFromJson;
+    if (!Object.keys(date).includes(this.selectedDate)) {
+      date[this.selectedDate] = [];
+      console.log('Nope');
+    }
+    date[this.selectedDate].push(this.selectedTime.toString());
+    console.log('Date', date);
+
+    this.postDate(date);
+
+  }
+
+  postDate(date: any) {
+    this.api.postDate(date)
       .subscribe({
         next: (res) => {
           console.log('Success =>', res);
@@ -120,15 +150,29 @@ export class TableComponent implements OnInit {
           console.log('Err');
         }
       });
-    // this.api.getDates()
-    //   .subscribe({
-    //     next: (res) => {
-    //       console.log('Success =>', res);
-    //     },
-    //     error: () => {
-    //       console.log('Err');
-    //     }
-    //   });
+  }
+
+  getDates() {
+    this.api.getDates()
+      .subscribe({
+        next: (res) => {
+          this.dateFromJson = res;
+          console.log('Success =>', res);
+        },
+        error: () => {
+          console.log('Err');
+        }
+      });
+  }
+
+  trigger() {
+    this.selectedDate = 'date_' + this.data.value.dateVal.toLocaleDateString().replaceAll('/', '');
+    console.log(this.selectedDate);
+  }
+
+  getTime() {
+    this.selectedTime = this.data.value.timeVal;
+    console.log(this.selectedTime);
   }
 }
 //   userId = 'efgh';
