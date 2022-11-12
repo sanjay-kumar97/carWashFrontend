@@ -73,4 +73,19 @@ export class ApiService {
     return this.http.delete<any>("http://localhost:3000/serviceData/" + id);
   }
 
+  getSpecificData(col: string, orderby: string) {
+    return this.http.get<any>("http://localhost:3000/serviceData/")
+  }
+
+  getUserSpecificData(col: string, orderby: string, uid: string) {
+
+  }
+
+  postDate(data: any) {
+    return this.http.post("http://localhost:3000/dates/", data);
+  }
+
+  getDates() {
+    return this.http.get<any>("http://localhost:3000/dates/");
+  }
 }

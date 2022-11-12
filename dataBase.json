@@ -234,6 +234,17 @@
       "id": 5
     }
   ],
+  "dates": {
+    "date_1": [
+      "Slot 1",
+      "Slot 2",
+      "Slot 5"
+    ],
+    "date_2": [
+      "Slot 3",
+      "Slot 4"
+    ]
+  },
   "comments": [
     {
       "id": 1,
