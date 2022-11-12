@@ -17,6 +17,7 @@ export class TableComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'model', 'service', 'location'];
   dataSource!: MatTableDataSource<any>;
   options = ['Slot 1', 'Slot 2', 'Slot 3', 'Slot 4', 'Slot 5'];
+  disabledOptions = ['Slot 3', 'Slot 5'];
   butDisabled = false;
   // dateVal = new FormControl('');
   // car: { id: string, name: string } = {

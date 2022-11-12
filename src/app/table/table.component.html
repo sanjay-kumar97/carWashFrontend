@@ -147,7 +147,7 @@
         <select class="col-2 mt-5 d-block mx-auto">"
             <option value="default" hidden selected>Select a Option</option>
             <ng-container *ngFor="let opt of options">
-                <option [attr.disabled]="opt == 'Slot 3' ? true : null">{{opt}}</option>
+                <option [attr.disabled]="disabledOptions.includes(opt) ? true : null">{{opt}}</option>
             </ng-container>
         </select>
         <button class="btn btn-primary col-2 mt-2 d-block mx-auto" (click)="onBtnClick()">Click</button>
