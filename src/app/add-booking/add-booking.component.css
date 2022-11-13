@@ -106,6 +106,19 @@ select .select-items {
     cursor: pointer;
 }
 
+option {
+    cursor: pointer;
+}
+
+.disabled_class {
+    color: red;
+    cursor: pointer;
+}
+
+.fork {
+    margin-left: 5px;
+}
+
 #special {
     width: 55.5% !important;
 }

@@ -26,6 +26,11 @@ export class AddBookingComponent implements OnInit {
   places: Array<any> = [];
   slots: Array<string> = ['Slot 1', 'Slot 2', 'Slot 3', 'Slot 4', 'Slot 5'];
   services: Array<any> = [];
+  disabledOptions: Array<string> = [''];
+
+  selectedDate: string = '';
+  selectedTime: string = '';
+  dateFromJson: any;
 
   UserID = sessionStorage.getItem('UID');
 
@@ -51,6 +56,7 @@ export class AddBookingComponent implements OnInit {
     });
     this.getPlacesAndServices();
     console.log('from here :/', this.places);
+    this.getDates();
   }
 
   get user() {
@@ -142,6 +148,16 @@ export class AddBookingComponent implements OnInit {
     }
     this.addData(this.UserSubmitData);
     this.addUserData(this.UserSubmitData, this.UserSubmitData.userID);
+
+    var dates: { [k: string]: string[] } = this.dateFromJson;
+    if (!Object.keys(dates).includes(this.selectedDate)) {
+      dates[this.selectedDate] = [];
+      console.log('Nope');
+    }
+    dates[this.selectedDate].push(this.selectedTime.toString());
+    console.log('Date', dates);
+
+    this.postDate(dates);
   }
 
   addData(data: any) {
@@ -179,7 +195,7 @@ export class AddBookingComponent implements OnInit {
         error: () => {
           console.log('From places', 'Error!');
         }
-      })
+      });
 
     this.api.getService()
       .subscribe({
@@ -191,6 +207,47 @@ export class AddBookingComponent implements OnInit {
         error: () => {
           console.log('From places', 'Error!');
         }
-      })
+      });
+  }
+
+  postDate(date: any) {
+    this.api.postDate(date)
+      .subscribe({
+        next: (data) => {
+          console.log('Success =>', data);
+        },
+        error: () => {
+          console.log('Err');
+        }
+      });
+  }
+
+  getDates() {
+    this.api.getDates()
+      .subscribe({
+        next: (res) => {
+          this.dateFromJson = res;
+          console.log('Success =>', res);
+        },
+        error: () => {
+          console.log('Err');
+        }
+      });
+  }
+
+  setDate() {
+    this.selectedDate = 'date_' + this.timeDetails.value.date.toLocaleDateString().replaceAll('/', '');
+    this.disabledOptions = [''];
+    for (let i = 0; i < 5; i++) {
+      if (this.dateFromJson[this.selectedDate][i]) {
+        this.disabledOptions.push(this.dateFromJson[this.selectedDate][i]);
+        // console.log('Yes');
+      }
+      console.log(this.dateFromJson[this.selectedDate][i]);
+    }
+  }
+
+  setTime() {
+    this.selectedTime = this.timeDetails.value.time;
   }
 }

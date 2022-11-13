@@ -5,10 +5,11 @@
     <div class="page__content shadow p-3">
         <div class="page__content-data">
             <div class="container-fluid p-3">
-                <div style="margin: 0 10px;" *ngIf="isAdmin">
+                <div style="margin: 0 10px;">
 
-                    <label for="Filter" style="width: 5%;">Filter: </label>
-                    <input type="text" (keyup)="applyFilter($event)" #input style="width: 95%;">
+                    <label for="Filter" style="font-size: 1.75rem;">Filter: </label>
+                    <input type="text" (keyup)="applyFilter($event)" #input
+                        style="width: 20%; margin-left: 15px; font-size: 1.5rem; padding: 2px 5px;">
 
                     <div class="mat-elevation-z8">
                         <table mat-table [dataSource]="dataSource" matSort style="width: 100%; margin-top: 20px;">
@@ -85,12 +86,12 @@
 
                 </div>
 
-                <div *ngIf="!isAdmin">
+                <!-- <div *ngIf="!isAdmin">
                     <table class="table table-hover table-bordered border-dark table-striped mx-auto mt-1"
                         style="width: 80%;">
                         <thead class="table-dark">
                             <tr>
-                                <!-- <th (click)="Sort('id')">No.</th> -->
+                                <th (click)="Sort('id')">No.</th>
                                 <th>Name</th>
                                 <th>Model</th>
                                 <th>Service</th>
@@ -103,7 +104,7 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let row of dataFromJson; let i = index;">
-                                <!-- <td *ngIf="UserId == row.userID">{{i+1}}</td> -->
+                                <td *ngIf="UserId == row.userID">{{i+1}}</td>
                                 <td *ngIf="UserId == row.userID">{{row.name}}</td>
                                 <td *ngIf="UserId == row.userID">{{row.model}}</td>
                                 <td *ngIf="UserId == row.userID">{{row.service}}</td>
@@ -115,7 +116,7 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

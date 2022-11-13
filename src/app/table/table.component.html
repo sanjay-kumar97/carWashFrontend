@@ -143,10 +143,12 @@
     <div class="col-12">
         <div class="col-2 mt-5 d-block mx-auto">
             <form [formGroup]="data">
-                <input matInput [matDatepicker]="picker" placeholder="Pick a Date" (dateChange)="trigger()"
-                    formControlName="dateVal">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
+                <div class="mt-5 d-block text-center">
+                    <input matInput [matDatepicker]="picker" placeholder="Pick a Date" (dateChange)="trigger()"
+                        formControlName="dateVal">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </div>
                 <select class="d-block mx-auto" formControlName="timeVal" (ngModelChange)="getTime()">
                     <option value="default" hidden selected>Select a Option</option>
                     <ng-container *ngFor="let opt of options">

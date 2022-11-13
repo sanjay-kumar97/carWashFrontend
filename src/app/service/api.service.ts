@@ -78,7 +78,7 @@ export class ApiService {
   }
 
   getUserSpecificData(col: string, orderby: string, uid: string) {
-
+    return this.http.get<any>("http://localhost:3000/bookingData/?_sort=" + col + "&_order=" + orderby + "&userID_like=" + uid);
   }
 
   postDate(data: any) {

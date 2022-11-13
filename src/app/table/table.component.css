@@ -9,6 +9,10 @@
     cursor: pointer;
 }
 
+mat-datepicker-toggle {
+    color: black;
+}
+
 /* .my_class {
     color: grey;
     pointer-events: none;

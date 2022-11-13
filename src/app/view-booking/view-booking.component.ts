@@ -44,16 +44,13 @@ export class ViewBookingComponent implements OnInit {
       .subscribe({
         next: (res) => {
           console.log(this.isAdmin, res);
-          // if (!this.isAdmin) {
-          //   // this.getUserBookingData();
-          this.dataSource = new MatTableDataSource(res);
-          this.dataSource.paginator = this.paginator;
-          this.dataSource.sort = this.sort;
-          // } else {
-          //   this.dataSource = new MatTableDataSource(res);
-          //   this.dataSource.paginator = this.paginator;
-          //   this.dataSource.sort = this.sort;
-          // }
+          if (!this.isAdmin) {
+            this.getUserBookingData();
+          } else {
+            this.dataSource = new MatTableDataSource(res);
+            this.dataSource.paginator = this.paginator;
+            this.dataSource.sort = this.sort;
+          }
 
           for (let i = 0; i < res.length; i++) {
             this.dataFromJson[i] = res[i];
@@ -69,7 +66,7 @@ export class ViewBookingComponent implements OnInit {
   }
 
   getUserBookingData() {
-    this.api.getUserData(this.UserId)
+    this.api.getUserSpecificData('id', 'asc', this.UserId)
       .subscribe({
         next: (res) => {
           console.log('From UserData :)', res);

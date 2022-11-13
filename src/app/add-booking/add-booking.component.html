@@ -44,13 +44,21 @@
                                 <p class="display-3">When?</p>
                                 <!-- <input type="text" formControlName="date" name="date" placeholder="Enter Date"><br> -->
                                 <input matInput [matDatepicker]="picker" formControlName="date"
-                                    placeholder="Pick a Date">
+                                    placeholder="Pick a Date" (dateChange)="setDate()">
                                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                 <mat-datepicker #picker></mat-datepicker>
                                 <!-- <input type="text" formControlName="time" name="time" placeholder="Enter Time"><br> -->
-                                <select formControlName="time" name="time" id="special">
+                                <select formControlName="time" name="time" id="special" (ngModelChange)="setTime()">
                                     <option hidden selected>Choose a Slot</option>
-                                    <option *ngFor="let i of slots">{{i}}</option>
+                                    <option *ngFor="let options of slots"
+                                        [attr.disabled]="disabledOptions.includes(options) ? true : null"
+                                        [ngClass]="{'disabled_class': disabledOptions.includes(options)}">{{options}}
+                                        <span class="fork" *ngIf="disabledOptions.includes(options)">
+                                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                            [Booked]&nbsp; &nbsp;</span>
+                                    </option>
                                 </select>
                                 <input (click)="previous()" type="button" name="previous"
                                     class="previous action-button-previous" value="<" />

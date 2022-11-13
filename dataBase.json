@@ -8,7 +8,7 @@
       "date": "08/11/2022",
       "time": "Slot 1",
       "phone": 9845325019,
-      "status": "Rejected",
+      "status": "Approved",
       "userID": "l6n0Q764VHZMNeMWF1JLUQkx8bJ3",
       "id": 1
     },
@@ -20,7 +20,7 @@
       "date": "10/11/2022",
       "time": "Slot 3",
       "phone": 9865324512,
-      "status": "Approved",
+      "status": "Rejected",
       "userID": "l6n0Q764VHZMNeMWF1JLUQkx8bJ3",
       "id": 2
     },
@@ -32,7 +32,7 @@
       "date": "10/11/2022",
       "time": "Slot 3",
       "phone": 9865324512,
-      "status": "Rejected",
+      "status": "Approved",
       "userID": "l6n0Q764VHZMNeMWF1JLUQkx8bJ3",
       "id": 3
     },
@@ -44,7 +44,7 @@
       "date": "10/11/2022",
       "time": "Slot 4",
       "phone": 9845321065,
-      "status": "Pending",
+      "status": "Rejected",
       "userID": "l6n0Q764VHZMNeMWF1JLUQkx8bJ3",
       "id": 4
     },
@@ -56,7 +56,7 @@
       "date": "10/11/2022",
       "time": "Slot 4",
       "phone": 9865321240,
-      "status": "Pending",
+      "status": "Approved",
       "userID": "IsopkhCxZIOuloZ1zDTUG7mN5LV2",
       "id": 5
     },
@@ -68,7 +68,7 @@
       "date": "12/11/2022",
       "time": "Slot 4",
       "phone": 9865321240,
-      "status": "Pending",
+      "status": "Rejected",
       "userID": "IsopkhCxZIOuloZ1zDTUG7mN5LV2",
       "id": 6
     },
@@ -80,7 +80,7 @@
       "date": "16/11/2022",
       "time": "Slot 1",
       "phone": 9865321240,
-      "status": "Pending",
+      "status": "Approved",
       "userID": "IsopkhCxZIOuloZ1zDTUG7mN5LV2",
       "id": 7
     },
@@ -92,7 +92,7 @@
       "date": "10/11/2022",
       "time": "Slot 4",
       "phone": 9865324512,
-      "status": "Pending",
+      "status": "Rejected",
       "userID": "o2b5ku82BuR3gmZfaF79p3AyQZo2",
       "id": 8
     },
@@ -107,6 +107,30 @@
       "status": "Approved",
       "userID": "l6n0Q764VHZMNeMWF1JLUQkx8bJ3",
       "id": 9
+    },
+    {
+      "name": "Peter",
+      "model": "Volkswagon Polo",
+      "service": "Full Service Wash",
+      "location": "Mumbai",
+      "date": "10/11/2022",
+      "time": "Slot 4",
+      "phone": 9865324512,
+      "status": "Pending",
+      "userID": "l6n0Q764VHZMNeMWF1JLUQkx8bJ3",
+      "id": 10
+    },
+    {
+      "name": "Peter",
+      "model": "Volks Vento",
+      "service": "Foam Wash",
+      "location": "Bangalore",
+      "date": "15/11/2022",
+      "time": "Slot 2",
+      "phone": 9865324512,
+      "status": "Pending",
+      "userID": "l6n0Q764VHZMNeMWF1JLUQkx8bJ3",
+      "id": 11
     }
   ],
   "serviceData": [
@@ -157,88 +181,22 @@
       "id": 7
     }
   ],
-  "Zvre89kqWSdt9JVoHr4RJrTrulC3": [],
-  "o2b5ku82BuR3gmZfaF79p3AyQZo2": [
-    {
-      "name": "John",
-      "model": "Toyota Lancer",
-      "service": "Exterior Wash",
-      "location": "Goa",
-      "date": "10/11/2022",
-      "time": "Slot 4",
-      "phone": 9865324512,
-      "status": "Pending",
-      "userID": "o2b5ku82BuR3gmZfaF79p3AyQZo2",
-      "id": 1
-    }
-  ],
-  "l6n0Q764VHZMNeMWF1JLUQkx8bJ3": [
-    {
-      "name": "Peter",
-      "model": "Volkswagen Polo",
-      "service": "Foam Wash",
-      "location": "Hyderabad",
-      "date": "08/11/2022",
-      "time": "Slot 1",
-      "phone": 9845325019,
-      "status": "Pending",
-      "userID": "l6n0Q764VHZMNeMWF1JLUQkx8bJ3",
-      "id": 1
-    },
-    {
-      "name": "Peter",
-      "model": "Volkswagen Polo",
-      "service": "Exterior Wash",
-      "location": "Chennai",
-      "date": "10/11/2022",
-      "time": "Slot 3",
-      "phone": 9865324512,
-      "status": "Pending",
-      "userID": "l6n0Q764VHZMNeMWF1JLUQkx8bJ3",
-      "id": 2
-    },
-    {
-      "name": "Peter",
-      "model": "Benzz",
-      "service": "Full Service Wash",
-      "location": "Goa",
-      "date": "10/11/2022",
-      "time": "Slot 3",
-      "phone": 9865324512,
-      "status": "Pending",
-      "userID": "l6n0Q764VHZMNeMWF1JLUQkx8bJ3",
-      "id": 3
-    },
-    {
-      "name": "Peter ",
-      "model": "Volkswagen Polo",
-      "service": "Normal Wash",
-      "location": "Mumbai",
-      "date": "10/11/2022",
-      "time": "Slot 4",
-      "phone": 9845321065,
-      "status": "Pending",
-      "userID": "l6n0Q764VHZMNeMWF1JLUQkx8bJ3",
-      "id": 4
-    },
-    {
-      "name": "Peter",
-      "model": "Suzuki",
-      "service": "Foam Wash",
-      "location": "Delhi",
-      "date": "10/11/2022",
-      "time": "Slot 4",
-      "phone": 986532120,
-      "status": "Pending",
-      "userID": "l6n0Q764VHZMNeMWF1JLUQkx8bJ3",
-      "id": 5
-    }
-  ],
   "dates": {
     "date_11112022": [
       "Slot 5",
       "Slot 3",
-      "Slot 1"
+      "Slot 1",
+      "Slot 4"
+    ],
+    "date_12112022": [
+      "Slot 3",
+      "Slot 4"
+    ],
+    "date_20112022": [
+      "Slot 3"
+    ],
+    "date_15112022": [
+      "Slot 2"
     ]
   },
   "comments": [

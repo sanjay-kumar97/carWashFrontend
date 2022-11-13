@@ -18,7 +18,7 @@ export class TableComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'model', 'service', 'location'];
   dataSource!: MatTableDataSource<any>;
   options = ['Slot 1', 'Slot 2', 'Slot 3', 'Slot 4', 'Slot 5'];
-  disabledOptions = [''];
+  disabledOptions: string[] = [''];
   butDisabled = false;
   data !: FormGroup;
   selectedDate!: string;
@@ -143,8 +143,8 @@ export class TableComponent implements OnInit {
   postDate(date: any) {
     this.api.postDate(date)
       .subscribe({
-        next: (res) => {
-          console.log('Success =>', res);
+        next: (data) => {
+          console.log('Success =>', data);
         },
         error: () => {
           console.log('Err');
@@ -168,6 +168,15 @@ export class TableComponent implements OnInit {
   trigger() {
     this.selectedDate = 'date_' + this.data.value.dateVal.toLocaleDateString().replaceAll('/', '');
     console.log(this.selectedDate);
+    this.disabledOptions = [''];
+    for (let i = 0; i < 5; i++) {
+      if (this.dateFromJson[this.selectedDate][i]) {
+        this.disabledOptions.push(this.dateFromJson[this.selectedDate][i]);
+        // console.log('Yes');
+      }
+      console.log(this.dateFromJson[this.selectedDate][i]);
+    }
+    // console.log((this.dateFromJson[this.selectedDate])[i]);
   }
 
   getTime() {
